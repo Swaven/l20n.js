@@ -45,8 +45,9 @@ export class Service {
   }
 
   handleEvent(evt) {
+    var languages = navigator.languages || [navigator.language];
     return changeLanguages.call(
-      this, evt.detail || getAdditionalLanguages(), navigator.languages);
+      this, evt.detail || getAdditionalLanguages(), languages);
   }
 }
 

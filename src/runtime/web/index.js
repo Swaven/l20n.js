@@ -3,7 +3,7 @@
 import { Service } from './service';
 import { View } from '../../bindings/html/view';
 
-const service = new Service(navigator.languages);
+const service = new Service(navigator.languages || [navigator.language]);
 window.addEventListener('languagechange', service);
 document.addEventListener('additionallanguageschange', service);
 

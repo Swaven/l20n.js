@@ -34,7 +34,8 @@ export class View {
 
   resolvedLanguages() {
     return this._interactive.then(
-      client => client.languages);
+      client => client.languages).catch(
+      err => console.log(err));
   }
 
   requestLanguages(langs) {
