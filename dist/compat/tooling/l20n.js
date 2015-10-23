@@ -3355,7 +3355,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       };
 
       Remote.prototype.handleEvent = function handleEvent(evt) {
-        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), navigator.languages);
+        var languages = navigator.languages || [navigator.language];
+        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), languages);
       };
 
       return Remote;

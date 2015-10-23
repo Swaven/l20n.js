@@ -2346,7 +2346,8 @@
         return pseudo[code].process(str);
       }
       handleEvent(evt) {
-        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), navigator.languages);
+        var languages = navigator.languages || [navigator.language];
+        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), languages);
       }
     }
 
@@ -2506,7 +2507,8 @@
     const { Remote } = getModule('bindings\\html\\remote');
     const { View } = getModule('bindings\\html\\view');
 
-    const remote = new Remote(fetch, broadcast, navigator.languages);
+    var languages = navigator.languages || [navigator.language];
+    const remote = new Remote(fetch, broadcast, languages);
     window.addEventListener('languagechange', remote);
     document.addEventListener('additionallanguageschange', remote);
 

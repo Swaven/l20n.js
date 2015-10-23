@@ -4,7 +4,8 @@ import { fetch } from '../web/io';
 import { Service, channel, broadcast } from './bridge';
 import { Remote } from '../../bindings/html/remote';
 
-const remote = new Remote(fetch, broadcast, navigator.languages);
+var languages = navigator.languages || [navigator.language];
+const remote = new Remote(fetch, broadcast, languages);
 window.addEventListener('languagechange', remote);
 document.addEventListener('additionallanguageschange', remote);
 

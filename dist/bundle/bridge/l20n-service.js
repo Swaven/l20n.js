@@ -2024,7 +2024,8 @@
         return pseudo[code].process(str);
       }
       handleEvent(evt) {
-        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), navigator.languages);
+        var languages = navigator.languages || [navigator.language];
+        return changeLanguages.call(this, evt.detail || getAdditionalLanguages(), languages);
       }
     }
 
@@ -2136,7 +2137,8 @@
     const { Service, channel, broadcast } = getModule('runtime\\bridge\\bridge');
     const { Remote } = getModule('bindings\\html\\remote');
 
-    const remote = new Remote(fetch, broadcast, navigator.languages);
+    var languages = navigator.languages || [navigator.language];
+    const remote = new Remote(fetch, broadcast, languages);
     window.addEventListener('languagechange', remote);
     document.addEventListener('additionallanguageschange', remote);
 
