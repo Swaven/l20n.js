@@ -14,7 +14,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     var locales2rules = {
       'af': 3,
       'ak': 4,
@@ -520,10 +520,10 @@
 
     return { getPluralRule: getPluralRule };
   });
-  modules.set('lib/mocks', function () {
-    var PropertiesParser = getModule('lib/format/properties/parser');
+  modules.set('lib\\mocks', function () {
+    var PropertiesParser = getModule('lib\\format\\properties\\parser');
 
-    var _getModule = getModule('lib/plurals');
+    var _getModule = getModule('lib\\plurals');
 
     var getPluralRule = _getModule.getPluralRule;
 
@@ -562,8 +562,8 @@
 
     return { lang: lang, createEntriesFromSource: createEntriesFromSource, MockContext: MockContext };
   });
-  modules.set('lib/resolver', function () {
-    var _getModule2 = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    var _getModule2 = getModule('lib\\errors');
 
     var L10nError = _getModule2.L10nError;
 
@@ -735,8 +735,8 @@
 
     return { format: format };
   });
-  modules.set('lib/format/properties/parser', function () {
-    var _getModule3 = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    var _getModule3 = getModule('lib\\errors');
 
     var L10nError = _getModule3.L10nError;
 
@@ -968,7 +968,7 @@
       }
     };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -980,8 +980,8 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError: L10nError };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    var _getModule4 = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    var _getModule4 = getModule('lib\\errors');
 
     var L10nError = _getModule4.L10nError;
 
@@ -1509,15 +1509,15 @@
       }
     };
   });
-  modules.set('runtime/jsshell/index', function () {
-    var L20nParser = getModule('lib/format/l20n/entries/parser');
-    var PropertiesParser = getModule('lib/format/properties/parser');
+  modules.set('runtime\\jsshell\\index', function () {
+    var L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    var PropertiesParser = getModule('lib\\format\\properties\\parser');
 
-    var _getModule5 = getModule('lib/resolver');
+    var _getModule5 = getModule('lib\\resolver');
 
     var format = _getModule5.format;
 
-    var _getModule6 = getModule('lib/mocks');
+    var _getModule6 = getModule('lib\\mocks');
 
     var MockContext = _getModule6.MockContext;
 
@@ -1528,5 +1528,5 @@
       format: format
     };
   });
-  getModule('runtime/jsshell/index');
+  getModule('runtime\\jsshell\\index');
 })(undefined);

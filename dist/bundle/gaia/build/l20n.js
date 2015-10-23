@@ -12,8 +12,8 @@
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/gaiabuild/legacy/serialize', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\serialize', function () {
+    const { L10nError } = getModule('lib\\errors');
 
     function serializeLegacyContext(ctx, lang) {
       const cache = ctx._env._resCache;
@@ -127,8 +127,8 @@
 
     return { serializeLegacyContext };
   });
-  modules.set('bindings/gaiabuild/serialize', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\serialize', function () {
+    const { L10nError } = getModule('lib\\errors');
 
     function serializeContext(ctx, lang) {
       const cache = ctx._env._resCache;
@@ -202,7 +202,7 @@
 
     return { serializeContext };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -226,7 +226,7 @@
 
     return { documentReady, getDirection };
   });
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     const reOverlay = /<|&#?\w+;/;
     const allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -386,8 +386,8 @@
 
     return { overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    const { overlayElement } = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    const { overlayElement } = getModule('bindings\\html\\overlay');
     const reHtml = /[&<>]/g;
     const htmlEntities = {
       '&': '&amp;',
@@ -486,7 +486,7 @@
 
     return { getResourceLinks, setAttributes, getAttributes, translateMutations, translateFragment };
   });
-  modules.set('bindings/gaiabuild/legacy/pseudo', function () {
+  modules.set('bindings\\gaiabuild\\legacy\\pseudo', function () {
     function walkContent(node, fn) {
       if (typeof node === 'string') {
         return fn(node);
@@ -512,8 +512,8 @@
 
     return { walkContent };
   });
-  modules.set('bindings/gaiabuild/legacy/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -732,8 +732,8 @@
       }
     };
   });
-  modules.set('bindings/gaiabuild/legacy/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const nonLatin1 = /[^\x01-\xFF]/;
@@ -930,9 +930,9 @@
 
     return { createEntry, format };
   });
-  modules.set('bindings/gaiabuild/legacy/context', function () {
-    const { Context } = getModule('lib/context');
-    const { format } = getModule('bindings/gaiabuild/legacy/resolver');
+  modules.set('bindings\\gaiabuild\\legacy\\context', function () {
+    const { Context } = getModule('lib\\context');
+    const { format } = getModule('bindings\\gaiabuild\\legacy\\resolver');
 
     function LegacyContext(env) {
       Context.call(this, env);
@@ -957,14 +957,14 @@
 
     return { LegacyContext };
   });
-  modules.set('bindings/gaiabuild/legacy/env', function () {
-    const { L10nError } = getModule('lib/errors');
-    const { Env, amendError } = getModule('lib/env');
-    const { LegacyContext } = getModule('bindings/gaiabuild/legacy/context');
-    const { createEntry } = getModule('bindings/gaiabuild/legacy/resolver');
-    const PropertiesParser = getModule('bindings/gaiabuild/legacy/parser');
-    const { walkContent } = getModule('bindings/gaiabuild/legacy/pseudo');
-    const { pseudo } = getModule('lib/pseudo');
+  modules.set('bindings\\gaiabuild\\legacy\\env', function () {
+    const { L10nError } = getModule('lib\\errors');
+    const { Env, amendError } = getModule('lib\\env');
+    const { LegacyContext } = getModule('bindings\\gaiabuild\\legacy\\context');
+    const { createEntry } = getModule('bindings\\gaiabuild\\legacy\\resolver');
+    const PropertiesParser = getModule('bindings\\gaiabuild\\legacy\\parser');
+    const { walkContent } = getModule('bindings\\gaiabuild\\legacy\\pseudo');
+    const { pseudo } = getModule('lib\\pseudo');
 
     function LegacyEnv(defaultLang, fetch) {
       Env.call(this, defaultLang, fetch);
@@ -1009,7 +1009,7 @@
 
     return { LegacyEnv };
   });
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners, ...args) {
       const type = args.shift();
 
@@ -1043,8 +1043,8 @@
 
     return { emit, addEventListener, removeEventListener };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
     return {
       parse: function (emit, string) {
@@ -1559,8 +1559,8 @@
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -1787,7 +1787,7 @@
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     const locales2rules = {
       'af': 3,
       'ak': 4,
@@ -2293,8 +2293,8 @@
 
     return { getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const FSI = '⁨';
@@ -2453,10 +2453,10 @@
 
     return { format };
   });
-  modules.set('lib/context', function () {
-    const { L10nError } = getModule('lib/errors');
-    const { format } = getModule('lib/resolver');
-    const { getPluralRule } = getModule('lib/plurals');
+  modules.set('lib\\context', function () {
+    const { L10nError } = getModule('lib\\errors');
+    const { format } = getModule('lib\\resolver');
+    const { getPluralRule } = getModule('lib\\plurals');
 
     class Context {
       constructor(env) {
@@ -2614,12 +2614,12 @@
 
     return { Context };
   });
-  modules.set('lib/env', function () {
-    const { Context } = getModule('lib/context');
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const L20nParser = getModule('lib/format/l20n/entries/parser');
-    const { walkEntry, pseudo } = getModule('lib/pseudo');
-    const { emit, addEventListener, removeEventListener } = getModule('lib/events');
+  modules.set('lib\\env', function () {
+    const { Context } = getModule('lib\\context');
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    const { walkEntry, pseudo } = getModule('lib\\pseudo');
+    const { emit, addEventListener, removeEventListener } = getModule('lib\\events');
     const parsers = {
       properties: PropertiesParser,
       l20n: L20nParser
@@ -2720,7 +2720,7 @@
 
     return { Env, amendError };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -2825,14 +2825,14 @@
     });
     return { walkEntry, walkValue, pseudo };
   });
-  modules.set('bindings/gaiabuild/view', function () {
-    const { pseudo } = getModule('lib/pseudo');
-    const { Env } = getModule('lib/env');
-    const { LegacyEnv } = getModule('bindings/gaiabuild/legacy/env');
-    const { getResourceLinks, translateFragment } = getModule('bindings/html/dom');
-    const { getDirection } = getModule('bindings/html/shims');
-    const { serializeContext } = getModule('bindings/gaiabuild/serialize');
-    const { serializeLegacyContext } = getModule('bindings/gaiabuild/legacy/serialize');
+  modules.set('bindings\\gaiabuild\\view', function () {
+    const { pseudo } = getModule('lib\\pseudo');
+    const { Env } = getModule('lib\\env');
+    const { LegacyEnv } = getModule('bindings\\gaiabuild\\legacy\\env');
+    const { getResourceLinks, translateFragment } = getModule('bindings\\html\\dom');
+    const { getDirection } = getModule('bindings\\html\\shims');
+    const { serializeContext } = getModule('bindings\\gaiabuild\\serialize');
+    const { serializeLegacyContext } = getModule('bindings\\gaiabuild\\legacy\\serialize');
 
     class View {
       constructor(htmloptimizer, fetch) {
@@ -2933,7 +2933,7 @@
 
     return { View };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -2945,8 +2945,8 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('runtime/gaia/build/io', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('runtime\\gaia\\build\\io', function () {
+    const { L10nError } = getModule('lib\\errors');
     return {
       fetch: function (htmloptimizer, res, lang) {
         const url = decodeURI(res).replace('{locale}', lang.code);
@@ -2964,10 +2964,10 @@
       }
     };
   });
-  modules.set('runtime/gaia/build/index', function () {
-    const { fetch } = getModule('runtime/gaia/build/io');
-    const { View } = getModule('bindings/gaiabuild/view');
-    const { pseudo, walkValue } = getModule('lib/pseudo');
+  modules.set('runtime\\gaia\\build\\index', function () {
+    const { fetch } = getModule('runtime\\gaia\\build\\io');
+    const { View } = getModule('bindings\\gaiabuild\\view');
+    const { pseudo, walkValue } = getModule('lib\\pseudo');
 
     function getView(htmloptimizer) {
       const htmlFetch = (...args) => fetch(htmloptimizer, ...args);
@@ -2978,7 +2978,7 @@
       pseudo, walkValue, getView
     };
   });
-  getModule('runtime/gaia/build/index');
+  getModule('runtime\\gaia\\build\\index');
 })(this);
 
 /* jshint node:true */

@@ -18,7 +18,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return moduleCache.get(id);
   }
 
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -30,7 +30,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     L10nError.prototype.constructor = L10nError;
     return { L10nError: L10nError };
   });
-  modules.set('lib/format/l20n/ast/ast', function () {
+  modules.set('lib\\format\\l20n\\ast\\ast', function () {
     var Node = function Node() {
       _classCallCheck(this, Node);
 
@@ -281,10 +281,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       JunkEntry: JunkEntry
     };
   });
-  modules.set('lib/format/l20n/ast/parser', function () {
-    var AST = getModule('lib/format/l20n/ast/ast');
+  modules.set('lib\\format\\l20n\\ast\\parser', function () {
+    var AST = getModule('lib\\format\\l20n\\ast\\ast');
 
-    var _getModule = getModule('lib/errors');
+    var _getModule = getModule('lib\\errors');
 
     var L10nError = _getModule.L10nError;
 
@@ -827,8 +827,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('runtime/tooling/aisle', function () {
-    var L20nParser = getModule('lib/format/l20n/ast/parser');
+  modules.set('runtime\\tooling\\aisle', function () {
+    var L20nParser = getModule('lib\\format\\l20n\\ast\\parser');
 
     define(function () {
       return {
@@ -836,5 +836,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       };
     });
   });
-  getModule('runtime/tooling/aisle');
+  getModule('runtime\\tooling\\aisle');
 })(undefined);

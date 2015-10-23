@@ -16,7 +16,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return moduleCache.get(id);
   }
 
-  modules.set('lib/intl', function () {
+  modules.set('lib\\intl', function () {
     function prioritizeLocales(def, availableLangs, requested) {
       var supportedLocale = undefined;
 
@@ -38,12 +38,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { prioritizeLocales: prioritizeLocales };
   });
-  modules.set('bindings/html/langs', function () {
-    var _getModule = getModule('lib/intl');
+  modules.set('bindings\\html\\langs', function () {
+    var _getModule = getModule('lib\\intl');
 
     var prioritizeLocales = _getModule.prioritizeLocales;
 
-    var _getModule2 = getModule('lib/pseudo');
+    var _getModule2 = getModule('lib\\pseudo');
 
     var pseudo = _getModule2.pseudo;
 
@@ -172,7 +172,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getMeta: getMeta, negotiateLanguages: negotiateLanguages };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -196,7 +196,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { documentReady: documentReady, getDirection: getDirection };
   });
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners) {
       var _this = this;
 
@@ -240,7 +240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { emit: emit, addEventListener: addEventListener, removeEventListener: removeEventListener };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -361,8 +361,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
     return { walkEntry: walkEntry, walkValue: walkValue, pseudo: pseudo };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    var _getModule3 = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    var _getModule3 = getModule('lib\\errors');
 
     var L10nError = _getModule3.L10nError;
 
@@ -890,8 +890,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    var _getModule4 = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    var _getModule4 = getModule('lib\\errors');
 
     var L10nError = _getModule4.L10nError;
 
@@ -1123,7 +1123,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     var locales2rules = {
       'af': 3,
       'ak': 4,
@@ -1629,8 +1629,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getPluralRule: getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    var _getModule5 = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    var _getModule5 = getModule('lib\\errors');
 
     var L10nError = _getModule5.L10nError;
 
@@ -1802,16 +1802,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { format: format };
   });
-  modules.set('lib/context', function () {
-    var _getModule6 = getModule('lib/errors');
+  modules.set('lib\\context', function () {
+    var _getModule6 = getModule('lib\\errors');
 
     var L10nError = _getModule6.L10nError;
 
-    var _getModule7 = getModule('lib/resolver');
+    var _getModule7 = getModule('lib\\resolver');
 
     var format = _getModule7.format;
 
-    var _getModule8 = getModule('lib/plurals');
+    var _getModule8 = getModule('lib\\plurals');
 
     var getPluralRule = _getModule8.getPluralRule;
 
@@ -2008,20 +2008,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Context: Context };
   });
-  modules.set('lib/env', function () {
-    var _getModule9 = getModule('lib/context');
+  modules.set('lib\\env', function () {
+    var _getModule9 = getModule('lib\\context');
 
     var Context = _getModule9.Context;
 
-    var PropertiesParser = getModule('lib/format/properties/parser');
-    var L20nParser = getModule('lib/format/l20n/entries/parser');
+    var PropertiesParser = getModule('lib\\format\\properties\\parser');
+    var L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
 
-    var _getModule10 = getModule('lib/pseudo');
+    var _getModule10 = getModule('lib\\pseudo');
 
     var walkEntry = _getModule10.walkEntry;
     var pseudo = _getModule10.pseudo;
 
-    var _getModule11 = getModule('lib/events');
+    var _getModule11 = getModule('lib\\events');
 
     var emit = _getModule11.emit;
     var addEventListener = _getModule11.addEventListener;
@@ -2152,20 +2152,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Env: Env, amendError: amendError };
   });
-  modules.set('bindings/html/remote', function () {
-    var _getModule12 = getModule('lib/env');
+  modules.set('bindings\\html\\remote', function () {
+    var _getModule12 = getModule('lib\\env');
 
     var Env = _getModule12.Env;
 
-    var _getModule13 = getModule('lib/pseudo');
+    var _getModule13 = getModule('lib\\pseudo');
 
     var pseudo = _getModule13.pseudo;
 
-    var _getModule14 = getModule('bindings/html/shims');
+    var _getModule14 = getModule('bindings\\html\\shims');
 
     var documentReady = _getModule14.documentReady;
 
-    var _getModule15 = getModule('bindings/html/langs');
+    var _getModule15 = getModule('bindings\\html\\langs');
 
     var getMeta = _getModule15.getMeta;
     var negotiateLanguages = _getModule15.negotiateLanguages;
@@ -2272,7 +2272,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Remote: Remote, getAdditionalLanguages: getAdditionalLanguages };
   });
-  modules.set('runtime/bridge/bridge', function () {
+  modules.set('runtime\\bridge\\bridge', function () {
     var Client = bridge.client;
     var Service = bridge.service;
     var channel = new BroadcastChannel('l20n-channel');
@@ -2283,7 +2283,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Client: Client, Service: Service, channel: channel, broadcast: broadcast };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -2295,8 +2295,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     L10nError.prototype.constructor = L10nError;
     return { L10nError: L10nError };
   });
-  modules.set('runtime/web/io', function () {
-    var _getModule16 = getModule('lib/errors');
+  modules.set('runtime\\web\\io', function () {
+    var _getModule16 = getModule('lib\\errors');
 
     var L10nError = _getModule16.L10nError;
 
@@ -2362,18 +2362,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { fetch: fetch };
   });
-  modules.set('runtime/bridge/service', function () {
-    var _getModule17 = getModule('runtime/web/io');
+  modules.set('runtime\\bridge\\service', function () {
+    var _getModule17 = getModule('runtime\\web\\io');
 
     var fetch = _getModule17.fetch;
 
-    var _getModule18 = getModule('runtime/bridge/bridge');
+    var _getModule18 = getModule('runtime\\bridge\\bridge');
 
     var Service = _getModule18.Service;
     var channel = _getModule18.channel;
     var broadcast = _getModule18.broadcast;
 
-    var _getModule19 = getModule('bindings/html/remote');
+    var _getModule19 = getModule('bindings\\html\\remote');
 
     var Remote = _getModule19.Remote;
 
@@ -2399,5 +2399,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return remote.unregisterView(clientId);
     }).listen(channel);
   });
-  getModule('runtime/bridge/service');
+  getModule('runtime\\bridge\\service');
 })(undefined);

@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -24,7 +24,7 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('lib/format/l20n/ast/ast', function () {
+  modules.set('lib\\format\\l20n\\ast\\ast', function () {
     class Node {
       constructor() {
         this.type = this.constructor.name;
@@ -171,9 +171,9 @@
       JunkEntry
     };
   });
-  modules.set('lib/format/l20n/ast/parser', function () {
-    const AST = getModule('lib/format/l20n/ast/ast');
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\ast\\parser', function () {
+    const AST = getModule('lib\\format\\l20n\\ast\\ast');
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
 
     class ParseContext {
@@ -682,8 +682,8 @@
       }
     };
   });
-  modules.set('runtime/tooling/aisle', function () {
-    const L20nParser = getModule('lib/format/l20n/ast/parser');
+  modules.set('runtime\\tooling\\aisle', function () {
+    const L20nParser = getModule('lib\\format\\l20n\\ast\\parser');
 
     define(function () {
       return {
@@ -691,7 +691,7 @@
       };
     });
   });
-  getModule('runtime/tooling/aisle');
+  getModule('runtime\\tooling\\aisle');
 })(this);
 
 /* global define */

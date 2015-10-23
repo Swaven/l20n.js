@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners, ...args) {
       const type = args.shift();
 
@@ -46,7 +46,7 @@
 
     return { emit, addEventListener, removeEventListener };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -151,8 +151,8 @@
     });
     return { walkEntry, walkValue, pseudo };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
     return {
       parse: function (emit, string) {
@@ -667,8 +667,8 @@
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -895,7 +895,7 @@
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     const locales2rules = {
       'af': 3,
       'ak': 4,
@@ -1401,8 +1401,8 @@
 
     return { getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const FSI = '⁨';
@@ -1561,10 +1561,10 @@
 
     return { format };
   });
-  modules.set('lib/context', function () {
-    const { L10nError } = getModule('lib/errors');
-    const { format } = getModule('lib/resolver');
-    const { getPluralRule } = getModule('lib/plurals');
+  modules.set('lib\\context', function () {
+    const { L10nError } = getModule('lib\\errors');
+    const { format } = getModule('lib\\resolver');
+    const { getPluralRule } = getModule('lib\\plurals');
 
     class Context {
       constructor(env) {
@@ -1722,12 +1722,12 @@
 
     return { Context };
   });
-  modules.set('lib/env', function () {
-    const { Context } = getModule('lib/context');
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const L20nParser = getModule('lib/format/l20n/entries/parser');
-    const { walkEntry, pseudo } = getModule('lib/pseudo');
-    const { emit, addEventListener, removeEventListener } = getModule('lib/events');
+  modules.set('lib\\env', function () {
+    const { Context } = getModule('lib\\context');
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    const { walkEntry, pseudo } = getModule('lib\\pseudo');
+    const { emit, addEventListener, removeEventListener } = getModule('lib\\events');
     const parsers = {
       properties: PropertiesParser,
       l20n: L20nParser
@@ -1828,7 +1828,7 @@
 
     return { Env, amendError };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -1840,12 +1840,12 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('runtime/node/io', function () {
+  modules.set('runtime\\node\\io', function () {
     const {
       readFile
     } = require('fs');
 
-    const { L10nError } = getModule('lib/errors');
+    const { L10nError } = getModule('lib\\errors');
 
     function load(url) {
       return new Promise(function (resolve, reject) {
@@ -1866,20 +1866,20 @@
 
     return { fetch };
   });
-  modules.set('runtime/node/index', function () {
+  modules.set('runtime\\node\\index', function () {
 
     /* jshint node:true */
 
     require('string.prototype.startswith');
     require('string.prototype.endswith');
 
-    const { fetch } = getModule('runtime/node/io');
-    const { Env } = getModule('lib/env');
+    const { fetch } = getModule('runtime\\node\\io');
+    const { Env } = getModule('lib\\env');
 
     module.exports = {
       fetch,
       Env
     };
   });
-  getModule('runtime/node/index');
+  getModule('runtime\\node\\index');
 })(this);

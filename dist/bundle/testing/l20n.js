@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     const reOverlay = /<|&#?\w+;/;
     const allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -172,8 +172,8 @@
 
     return { overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    const { overlayElement } = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    const { overlayElement } = getModule('bindings\\html\\overlay');
     const reHtml = /[&<>]/g;
     const htmlEntities = {
       '&': '&amp;',
@@ -272,12 +272,12 @@
 
     return { getResourceLinks, setAttributes, getAttributes, translateMutations, translateFragment };
   });
-  modules.set('runtime/tooling/testing', function () {
-    const dom = getModule('bindings/html/dom');
+  modules.set('runtime\\tooling\\testing', function () {
+    const dom = getModule('bindings\\html\\dom');
 
     window.L20n = {
       dom
     };
   });
-  getModule('runtime/tooling/testing');
+  getModule('runtime\\tooling\\testing');
 })(this);

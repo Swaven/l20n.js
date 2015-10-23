@@ -16,7 +16,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return moduleCache.get(id);
   }
 
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners) {
       var _this = this;
 
@@ -60,7 +60,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { emit: emit, addEventListener: addEventListener, removeEventListener: removeEventListener };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -181,8 +181,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
     return { walkEntry: walkEntry, walkValue: walkValue, pseudo: pseudo };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    var _getModule = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    var _getModule = getModule('lib\\errors');
 
     var L10nError = _getModule.L10nError;
 
@@ -710,8 +710,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    var _getModule2 = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    var _getModule2 = getModule('lib\\errors');
 
     var L10nError = _getModule2.L10nError;
 
@@ -943,7 +943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     var locales2rules = {
       'af': 3,
       'ak': 4,
@@ -1449,8 +1449,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getPluralRule: getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    var _getModule3 = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    var _getModule3 = getModule('lib\\errors');
 
     var L10nError = _getModule3.L10nError;
 
@@ -1622,16 +1622,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { format: format };
   });
-  modules.set('lib/context', function () {
-    var _getModule4 = getModule('lib/errors');
+  modules.set('lib\\context', function () {
+    var _getModule4 = getModule('lib\\errors');
 
     var L10nError = _getModule4.L10nError;
 
-    var _getModule5 = getModule('lib/resolver');
+    var _getModule5 = getModule('lib\\resolver');
 
     var format = _getModule5.format;
 
-    var _getModule6 = getModule('lib/plurals');
+    var _getModule6 = getModule('lib\\plurals');
 
     var getPluralRule = _getModule6.getPluralRule;
 
@@ -1828,20 +1828,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Context: Context };
   });
-  modules.set('lib/env', function () {
-    var _getModule7 = getModule('lib/context');
+  modules.set('lib\\env', function () {
+    var _getModule7 = getModule('lib\\context');
 
     var Context = _getModule7.Context;
 
-    var PropertiesParser = getModule('lib/format/properties/parser');
-    var L20nParser = getModule('lib/format/l20n/entries/parser');
+    var PropertiesParser = getModule('lib\\format\\properties\\parser');
+    var L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
 
-    var _getModule8 = getModule('lib/pseudo');
+    var _getModule8 = getModule('lib\\pseudo');
 
     var walkEntry = _getModule8.walkEntry;
     var pseudo = _getModule8.pseudo;
 
-    var _getModule9 = getModule('lib/events');
+    var _getModule9 = getModule('lib\\events');
 
     var emit = _getModule9.emit;
     var addEventListener = _getModule9.addEventListener;
@@ -1972,7 +1972,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Env: Env, amendError: amendError };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -1984,12 +1984,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     L10nError.prototype.constructor = L10nError;
     return { L10nError: L10nError };
   });
-  modules.set('runtime/node/io', function () {
+  modules.set('runtime\\node\\io', function () {
     var _require = require('fs');
 
     var readFile = _require.readFile;
 
-    var _getModule10 = getModule('lib/errors');
+    var _getModule10 = getModule('lib\\errors');
 
     var L10nError = _getModule10.L10nError;
 
@@ -2012,16 +2012,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { fetch: fetch };
   });
-  modules.set('runtime/node/index', function () {
+  modules.set('runtime\\node\\index', function () {
 
     require('string.prototype.startswith');
     require('string.prototype.endswith');
 
-    var _getModule11 = getModule('runtime/node/io');
+    var _getModule11 = getModule('runtime\\node\\io');
 
     var fetch = _getModule11.fetch;
 
-    var _getModule12 = getModule('lib/env');
+    var _getModule12 = getModule('lib\\env');
 
     var Env = _getModule12.Env;
 
@@ -2030,5 +2030,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Env: Env
     };
   });
-  getModule('runtime/node/index');
+  getModule('runtime\\node\\index');
 })(undefined);

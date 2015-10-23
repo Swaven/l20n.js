@@ -14,7 +14,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     var reOverlay = /<|&#?\w+;/;
     var allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -175,8 +175,8 @@
 
     return { overlayElement: overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    var _getModule = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    var _getModule = getModule('bindings\\html\\overlay');
 
     var overlayElement = _getModule.overlayElement;
 
@@ -310,12 +310,12 @@
 
     return { getResourceLinks: getResourceLinks, setAttributes: setAttributes, getAttributes: getAttributes, translateMutations: translateMutations, translateFragment: translateFragment };
   });
-  modules.set('runtime/tooling/testing', function () {
-    var dom = getModule('bindings/html/dom');
+  modules.set('runtime\\tooling\\testing', function () {
+    var dom = getModule('bindings\\html\\dom');
 
     window.L20n = {
       dom: dom
     };
   });
-  getModule('runtime/tooling/testing');
+  getModule('runtime\\tooling\\testing');
 })(undefined);

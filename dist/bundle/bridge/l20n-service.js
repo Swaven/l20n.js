@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('lib/intl', function () {
+  modules.set('lib\\intl', function () {
     function prioritizeLocales(def, availableLangs, requested) {
       let supportedLocale;
 
@@ -34,9 +34,9 @@
 
     return { prioritizeLocales };
   });
-  modules.set('bindings/html/langs', function () {
-    const { prioritizeLocales } = getModule('lib/intl');
-    const { pseudo } = getModule('lib/pseudo');
+  modules.set('bindings\\html\\langs', function () {
+    const { prioritizeLocales } = getModule('lib\\intl');
+    const { pseudo } = getModule('lib\\pseudo');
 
     function getMeta(head) {
       let availableLangs = Object.create(null);
@@ -135,7 +135,7 @@
 
     return { getMeta, negotiateLanguages };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -159,7 +159,7 @@
 
     return { documentReady, getDirection };
   });
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners, ...args) {
       const type = args.shift();
 
@@ -193,7 +193,7 @@
 
     return { emit, addEventListener, removeEventListener };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -298,8 +298,8 @@
     });
     return { walkEntry, walkValue, pseudo };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
     return {
       parse: function (emit, string) {
@@ -814,8 +814,8 @@
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -1042,7 +1042,7 @@
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     const locales2rules = {
       'af': 3,
       'ak': 4,
@@ -1548,8 +1548,8 @@
 
     return { getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const FSI = '⁨';
@@ -1708,10 +1708,10 @@
 
     return { format };
   });
-  modules.set('lib/context', function () {
-    const { L10nError } = getModule('lib/errors');
-    const { format } = getModule('lib/resolver');
-    const { getPluralRule } = getModule('lib/plurals');
+  modules.set('lib\\context', function () {
+    const { L10nError } = getModule('lib\\errors');
+    const { format } = getModule('lib\\resolver');
+    const { getPluralRule } = getModule('lib\\plurals');
 
     class Context {
       constructor(env) {
@@ -1869,12 +1869,12 @@
 
     return { Context };
   });
-  modules.set('lib/env', function () {
-    const { Context } = getModule('lib/context');
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const L20nParser = getModule('lib/format/l20n/entries/parser');
-    const { walkEntry, pseudo } = getModule('lib/pseudo');
-    const { emit, addEventListener, removeEventListener } = getModule('lib/events');
+  modules.set('lib\\env', function () {
+    const { Context } = getModule('lib\\context');
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    const { walkEntry, pseudo } = getModule('lib\\pseudo');
+    const { emit, addEventListener, removeEventListener } = getModule('lib\\events');
     const parsers = {
       properties: PropertiesParser,
       l20n: L20nParser
@@ -1975,11 +1975,11 @@
 
     return { Env, amendError };
   });
-  modules.set('bindings/html/remote', function () {
-    const { Env } = getModule('lib/env');
-    const { pseudo } = getModule('lib/pseudo');
-    const { documentReady } = getModule('bindings/html/shims');
-    const { getMeta, negotiateLanguages } = getModule('bindings/html/langs');
+  modules.set('bindings\\html\\remote', function () {
+    const { Env } = getModule('lib\\env');
+    const { pseudo } = getModule('lib\\pseudo');
+    const { documentReady } = getModule('bindings\\html\\shims');
+    const { getMeta, negotiateLanguages } = getModule('bindings\\html\\langs');
 
     class Remote {
       constructor(fetch, broadcast, requestedLangs) {
@@ -2043,7 +2043,7 @@
 
     return { Remote, getAdditionalLanguages };
   });
-  modules.set('runtime/bridge/bridge', function () {
+  modules.set('runtime\\bridge\\bridge', function () {
     const Client = bridge.client;
     const Service = bridge.service;
     const channel = new BroadcastChannel('l20n-channel');
@@ -2054,7 +2054,7 @@
 
     return { Client, Service, channel, broadcast };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -2066,8 +2066,8 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('runtime/web/io', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('runtime\\web\\io', function () {
+    const { L10nError } = getModule('lib\\errors');
 
     function load(type, url) {
       return new Promise(function (resolve, reject) {
@@ -2131,10 +2131,10 @@
 
     return { fetch };
   });
-  modules.set('runtime/bridge/service', function () {
-    const { fetch } = getModule('runtime/web/io');
-    const { Service, channel, broadcast } = getModule('runtime/bridge/bridge');
-    const { Remote } = getModule('bindings/html/remote');
+  modules.set('runtime\\bridge\\service', function () {
+    const { fetch } = getModule('runtime\\web\\io');
+    const { Service, channel, broadcast } = getModule('runtime\\bridge\\bridge');
+    const { Remote } = getModule('bindings\\html\\remote');
 
     const remote = new Remote(fetch, broadcast, navigator.languages);
     window.addEventListener('languagechange', remote);
@@ -2142,5 +2142,5 @@
 
     remote.service = new Service('l20n').method('registerView', (...args) => remote.registerView(...args)).method('resolvedLanguages', (...args) => remote.resolvedLanguages(...args)).method('requestLanguages', (...args) => remote.requestLanguages(...args)).method('resolveEntities', (...args) => remote.resolveEntities(...args)).method('formatValues', (...args) => remote.formatValues(...args)).method('getName', (...args) => remote.getName(...args)).method('processString', (...args) => remote.processString(...args)).on('disconnect', clientId => remote.unregisterView(clientId)).listen(channel);
   });
-  getModule('runtime/bridge/service');
+  getModule('runtime\\bridge\\service');
 })(this);

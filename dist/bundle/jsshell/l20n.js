@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     const locales2rules = {
       'af': 3,
       'ak': 4,
@@ -518,9 +518,9 @@
 
     return { getPluralRule };
   });
-  modules.set('lib/mocks', function () {
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const { getPluralRule } = getModule('lib/plurals');
+  modules.set('lib\\mocks', function () {
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const { getPluralRule } = getModule('lib\\plurals');
     const lang = {
       code: 'en-US',
       src: 'app'
@@ -556,8 +556,8 @@
 
     return { lang, createEntriesFromSource, MockContext };
   });
-  modules.set('lib/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const FSI = '⁨';
@@ -716,8 +716,8 @@
 
     return { format };
   });
-  modules.set('lib/format/properties/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -944,7 +944,7 @@
       }
     };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -956,8 +956,8 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
     return {
       parse: function (emit, string) {
@@ -1472,11 +1472,11 @@
       }
     };
   });
-  modules.set('runtime/jsshell/index', function () {
-    const L20nParser = getModule('lib/format/l20n/entries/parser');
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const { format } = getModule('lib/resolver');
-    const { MockContext } = getModule('lib/mocks');
+  modules.set('runtime\\jsshell\\index', function () {
+    const L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const { format } = getModule('lib\\resolver');
+    const { MockContext } = getModule('lib\\mocks');
 
     this.L20n = {
       MockContext,
@@ -1485,5 +1485,5 @@
       format
     };
   });
-  getModule('runtime/jsshell/index');
+  getModule('runtime\\jsshell\\index');
 })(this);

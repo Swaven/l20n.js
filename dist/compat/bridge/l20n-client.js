@@ -16,7 +16,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     var reOverlay = /<|&#?\w+;/;
     var allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -177,8 +177,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { overlayElement: overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    var _getModule = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    var _getModule = getModule('bindings\\html\\overlay');
 
     var overlayElement = _getModule.overlayElement;
 
@@ -312,7 +312,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getResourceLinks: getResourceLinks, setAttributes: setAttributes, getAttributes: getAttributes, translateMutations: translateMutations, translateFragment: translateFragment };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -336,13 +336,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { documentReady: documentReady, getDirection: getDirection };
   });
-  modules.set('bindings/html/view', function () {
-    var _getModule2 = getModule('bindings/html/shims');
+  modules.set('bindings\\html\\view', function () {
+    var _getModule2 = getModule('bindings\\html\\shims');
 
     var documentReady = _getModule2.documentReady;
     var getDirection = _getModule2.getDirection;
 
-    var _getModule3 = getModule('bindings/html/dom');
+    var _getModule3 = getModule('bindings\\html\\dom');
 
     var setAttributes = _getModule3.setAttributes;
     var getAttributes = _getModule3.getAttributes;
@@ -508,7 +508,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { View: View, translateDocument: translateDocument };
   });
-  modules.set('runtime/bridge/bridge', function () {
+  modules.set('runtime\\bridge\\bridge', function () {
     var Client = bridge.client;
     var Service = bridge.service;
     var channel = new BroadcastChannel('l20n-channel');
@@ -519,13 +519,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Client: Client, Service: Service, channel: channel, broadcast: broadcast };
   });
-  modules.set('runtime/bridge/client', function () {
-    var _getModule4 = getModule('runtime/bridge/bridge');
+  modules.set('runtime\\bridge\\client', function () {
+    var _getModule4 = getModule('runtime\\bridge\\bridge');
 
     var Client = _getModule4.Client;
     var channel = _getModule4.channel;
 
-    var _getModule5 = getModule('bindings/html/view');
+    var _getModule5 = getModule('bindings\\html\\view');
 
     var View = _getModule5.View;
 
@@ -568,5 +568,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  getModule('runtime/bridge/client');
+  getModule('runtime\\bridge\\client');
 })(undefined);

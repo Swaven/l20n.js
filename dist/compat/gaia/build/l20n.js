@@ -16,8 +16,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/gaiabuild/legacy/serialize', function () {
-    var _getModule = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\serialize', function () {
+    var _getModule = getModule('lib\\errors');
 
     var L10nError = _getModule.L10nError;
 
@@ -141,8 +141,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { serializeLegacyContext: serializeLegacyContext };
   });
-  modules.set('bindings/gaiabuild/serialize', function () {
-    var _getModule2 = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\serialize', function () {
+    var _getModule2 = getModule('lib\\errors');
 
     var L10nError = _getModule2.L10nError;
 
@@ -226,7 +226,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { serializeContext: serializeContext };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -250,7 +250,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { documentReady: documentReady, getDirection: getDirection };
   });
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     var reOverlay = /<|&#?\w+;/;
     var allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -411,8 +411,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { overlayElement: overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    var _getModule3 = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    var _getModule3 = getModule('bindings\\html\\overlay');
 
     var overlayElement = _getModule3.overlayElement;
 
@@ -546,7 +546,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getResourceLinks: getResourceLinks, setAttributes: setAttributes, getAttributes: getAttributes, translateMutations: translateMutations, translateFragment: translateFragment };
   });
-  modules.set('bindings/gaiabuild/legacy/pseudo', function () {
+  modules.set('bindings\\gaiabuild\\legacy\\pseudo', function () {
     function walkContent(node, fn) {
       if (typeof node === 'string') {
         return fn(node);
@@ -572,8 +572,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { walkContent: walkContent };
   });
-  modules.set('bindings/gaiabuild/legacy/parser', function () {
-    var _getModule4 = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\parser', function () {
+    var _getModule4 = getModule('lib\\errors');
 
     var L10nError = _getModule4.L10nError;
 
@@ -795,8 +795,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('bindings/gaiabuild/legacy/resolver', function () {
-    var _getModule5 = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\resolver', function () {
+    var _getModule5 = getModule('lib\\errors');
 
     var L10nError = _getModule5.L10nError;
 
@@ -1002,12 +1002,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { createEntry: createEntry, format: format };
   });
-  modules.set('bindings/gaiabuild/legacy/context', function () {
-    var _getModule6 = getModule('lib/context');
+  modules.set('bindings\\gaiabuild\\legacy\\context', function () {
+    var _getModule6 = getModule('lib\\context');
 
     var Context = _getModule6.Context;
 
-    var _getModule7 = getModule('bindings/gaiabuild/legacy/resolver');
+    var _getModule7 = getModule('bindings\\gaiabuild\\legacy\\resolver');
 
     var format = _getModule7.format;
 
@@ -1034,31 +1034,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { LegacyContext: LegacyContext };
   });
-  modules.set('bindings/gaiabuild/legacy/env', function () {
-    var _getModule8 = getModule('lib/errors');
+  modules.set('bindings\\gaiabuild\\legacy\\env', function () {
+    var _getModule8 = getModule('lib\\errors');
 
     var L10nError = _getModule8.L10nError;
 
-    var _getModule9 = getModule('lib/env');
+    var _getModule9 = getModule('lib\\env');
 
     var Env = _getModule9.Env;
     var amendError = _getModule9.amendError;
 
-    var _getModule10 = getModule('bindings/gaiabuild/legacy/context');
+    var _getModule10 = getModule('bindings\\gaiabuild\\legacy\\context');
 
     var LegacyContext = _getModule10.LegacyContext;
 
-    var _getModule11 = getModule('bindings/gaiabuild/legacy/resolver');
+    var _getModule11 = getModule('bindings\\gaiabuild\\legacy\\resolver');
 
     var createEntry = _getModule11.createEntry;
 
-    var PropertiesParser = getModule('bindings/gaiabuild/legacy/parser');
+    var PropertiesParser = getModule('bindings\\gaiabuild\\legacy\\parser');
 
-    var _getModule12 = getModule('bindings/gaiabuild/legacy/pseudo');
+    var _getModule12 = getModule('bindings\\gaiabuild\\legacy\\pseudo');
 
     var walkContent = _getModule12.walkContent;
 
-    var _getModule13 = getModule('lib/pseudo');
+    var _getModule13 = getModule('lib\\pseudo');
 
     var pseudo = _getModule13.pseudo;
 
@@ -1109,7 +1109,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { LegacyEnv: LegacyEnv };
   });
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners) {
       var _this2 = this;
 
@@ -1153,8 +1153,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { emit: emit, addEventListener: addEventListener, removeEventListener: removeEventListener };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    var _getModule14 = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    var _getModule14 = getModule('lib\\errors');
 
     var L10nError = _getModule14.L10nError;
 
@@ -1682,8 +1682,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    var _getModule15 = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    var _getModule15 = getModule('lib\\errors');
 
     var L10nError = _getModule15.L10nError;
 
@@ -1915,7 +1915,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     var locales2rules = {
       'af': 3,
       'ak': 4,
@@ -2421,8 +2421,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { getPluralRule: getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    var _getModule16 = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    var _getModule16 = getModule('lib\\errors');
 
     var L10nError = _getModule16.L10nError;
 
@@ -2594,16 +2594,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { format: format };
   });
-  modules.set('lib/context', function () {
-    var _getModule17 = getModule('lib/errors');
+  modules.set('lib\\context', function () {
+    var _getModule17 = getModule('lib\\errors');
 
     var L10nError = _getModule17.L10nError;
 
-    var _getModule18 = getModule('lib/resolver');
+    var _getModule18 = getModule('lib\\resolver');
 
     var format = _getModule18.format;
 
-    var _getModule19 = getModule('lib/plurals');
+    var _getModule19 = getModule('lib\\plurals');
 
     var getPluralRule = _getModule19.getPluralRule;
 
@@ -2800,20 +2800,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Context: Context };
   });
-  modules.set('lib/env', function () {
-    var _getModule20 = getModule('lib/context');
+  modules.set('lib\\env', function () {
+    var _getModule20 = getModule('lib\\context');
 
     var Context = _getModule20.Context;
 
-    var PropertiesParser = getModule('lib/format/properties/parser');
-    var L20nParser = getModule('lib/format/l20n/entries/parser');
+    var PropertiesParser = getModule('lib\\format\\properties\\parser');
+    var L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
 
-    var _getModule21 = getModule('lib/pseudo');
+    var _getModule21 = getModule('lib\\pseudo');
 
     var walkEntry = _getModule21.walkEntry;
     var pseudo = _getModule21.pseudo;
 
-    var _getModule22 = getModule('lib/events');
+    var _getModule22 = getModule('lib\\events');
 
     var emit = _getModule22.emit;
     var addEventListener = _getModule22.addEventListener;
@@ -2944,7 +2944,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { Env: Env, amendError: amendError };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -3065,33 +3065,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
     return { walkEntry: walkEntry, walkValue: walkValue, pseudo: pseudo };
   });
-  modules.set('bindings/gaiabuild/view', function () {
-    var _getModule23 = getModule('lib/pseudo');
+  modules.set('bindings\\gaiabuild\\view', function () {
+    var _getModule23 = getModule('lib\\pseudo');
 
     var pseudo = _getModule23.pseudo;
 
-    var _getModule24 = getModule('lib/env');
+    var _getModule24 = getModule('lib\\env');
 
     var Env = _getModule24.Env;
 
-    var _getModule25 = getModule('bindings/gaiabuild/legacy/env');
+    var _getModule25 = getModule('bindings\\gaiabuild\\legacy\\env');
 
     var LegacyEnv = _getModule25.LegacyEnv;
 
-    var _getModule26 = getModule('bindings/html/dom');
+    var _getModule26 = getModule('bindings\\html\\dom');
 
     var getResourceLinks = _getModule26.getResourceLinks;
     var translateFragment = _getModule26.translateFragment;
 
-    var _getModule27 = getModule('bindings/html/shims');
+    var _getModule27 = getModule('bindings\\html\\shims');
 
     var getDirection = _getModule27.getDirection;
 
-    var _getModule28 = getModule('bindings/gaiabuild/serialize');
+    var _getModule28 = getModule('bindings\\gaiabuild\\serialize');
 
     var serializeContext = _getModule28.serializeContext;
 
-    var _getModule29 = getModule('bindings/gaiabuild/legacy/serialize');
+    var _getModule29 = getModule('bindings\\gaiabuild\\legacy\\serialize');
 
     var serializeLegacyContext = _getModule29.serializeLegacyContext;
 
@@ -3223,7 +3223,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return { View: View };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -3235,8 +3235,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     L10nError.prototype.constructor = L10nError;
     return { L10nError: L10nError };
   });
-  modules.set('runtime/gaia/build/io', function () {
-    var _getModule30 = getModule('lib/errors');
+  modules.set('runtime\\gaia\\build\\io', function () {
+    var _getModule30 = getModule('lib\\errors');
 
     var L10nError = _getModule30.L10nError;
 
@@ -3258,16 +3258,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     };
   });
-  modules.set('runtime/gaia/build/index', function () {
-    var _getModule31 = getModule('runtime/gaia/build/io');
+  modules.set('runtime\\gaia\\build\\index', function () {
+    var _getModule31 = getModule('runtime\\gaia\\build\\io');
 
     var fetch = _getModule31.fetch;
 
-    var _getModule32 = getModule('bindings/gaiabuild/view');
+    var _getModule32 = getModule('bindings\\gaiabuild\\view');
 
     var View = _getModule32.View;
 
-    var _getModule33 = getModule('lib/pseudo');
+    var _getModule33 = getModule('lib\\pseudo');
 
     var pseudo = _getModule33.pseudo;
     var walkValue = _getModule33.walkValue;
@@ -3287,5 +3287,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       pseudo: pseudo, walkValue: walkValue, getView: getView
     };
   });
-  getModule('runtime/gaia/build/index');
+  getModule('runtime\\gaia\\build\\index');
 })(undefined);

@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     const reOverlay = /<|&#?\w+;/;
     const allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -172,8 +172,8 @@
 
     return { overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    const { overlayElement } = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    const { overlayElement } = getModule('bindings\\html\\overlay');
     const reHtml = /[&<>]/g;
     const htmlEntities = {
       '&': '&amp;',
@@ -272,7 +272,7 @@
 
     return { getResourceLinks, setAttributes, getAttributes, translateMutations, translateFragment };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -296,9 +296,9 @@
 
     return { documentReady, getDirection };
   });
-  modules.set('bindings/html/view', function () {
-    const { documentReady, getDirection } = getModule('bindings/html/shims');
-    const { setAttributes, getAttributes, translateFragment, translateMutations, getResourceLinks } = getModule('bindings/html/dom');
+  modules.set('bindings\\html\\view', function () {
+    const { documentReady, getDirection } = getModule('bindings\\html\\shims');
+    const { setAttributes, getAttributes, translateFragment, translateMutations, getResourceLinks } = getModule('bindings\\html\\dom');
     const observerConfig = {
       attributes: true,
       characterData: false,
@@ -392,7 +392,7 @@
 
     return { View, translateDocument };
   });
-  modules.set('runtime/bridge/bridge', function () {
+  modules.set('runtime\\bridge\\bridge', function () {
     const Client = bridge.client;
     const Service = bridge.service;
     const channel = new BroadcastChannel('l20n-channel');
@@ -403,9 +403,9 @@
 
     return { Client, Service, channel, broadcast };
   });
-  modules.set('runtime/bridge/client', function () {
-    const { Client, channel } = getModule('runtime/bridge/bridge');
-    const { View } = getModule('bindings/html/view');
+  modules.set('runtime\\bridge\\client', function () {
+    const { Client, channel } = getModule('runtime\\bridge\\bridge');
+    const { View } = getModule('bindings\\html\\view');
 
     const client = new Client({
       service: 'l20n',
@@ -432,5 +432,5 @@
       })
     };
   });
-  getModule('runtime/bridge/client');
+  getModule('runtime\\bridge\\client');
 })(this);

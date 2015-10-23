@@ -12,7 +12,7 @@
     return moduleCache.get(id);
   }
 
-  modules.set('bindings/html/overlay', function () {
+  modules.set('bindings\\html\\overlay', function () {
     const reOverlay = /<|&#?\w+;/;
     const allowed = {
       elements: ['a', 'em', 'strong', 'small', 's', 'cite', 'q', 'dfn', 'abbr', 'data', 'time', 'code', 'var', 'samp', 'kbd', 'sub', 'sup', 'i', 'b', 'u', 'mark', 'ruby', 'rt', 'rp', 'bdi', 'bdo', 'span', 'br', 'wbr'],
@@ -172,8 +172,8 @@
 
     return { overlayElement };
   });
-  modules.set('bindings/html/dom', function () {
-    const { overlayElement } = getModule('bindings/html/overlay');
+  modules.set('bindings\\html\\dom', function () {
+    const { overlayElement } = getModule('bindings\\html\\overlay');
     const reHtml = /[&<>]/g;
     const htmlEntities = {
       '&': '&amp;',
@@ -272,9 +272,9 @@
 
     return { getResourceLinks, setAttributes, getAttributes, translateMutations, translateFragment };
   });
-  modules.set('bindings/html/view', function () {
-    const { documentReady, getDirection } = getModule('bindings/html/shims');
-    const { setAttributes, getAttributes, translateFragment, translateMutations, getResourceLinks } = getModule('bindings/html/dom');
+  modules.set('bindings\\html\\view', function () {
+    const { documentReady, getDirection } = getModule('bindings\\html\\shims');
+    const { setAttributes, getAttributes, translateFragment, translateMutations, getResourceLinks } = getModule('bindings\\html\\dom');
     const observerConfig = {
       attributes: true,
       characterData: false,
@@ -368,7 +368,7 @@
 
     return { View, translateDocument };
   });
-  modules.set('lib/intl', function () {
+  modules.set('lib\\intl', function () {
     function prioritizeLocales(def, availableLangs, requested) {
       let supportedLocale;
 
@@ -390,9 +390,9 @@
 
     return { prioritizeLocales };
   });
-  modules.set('bindings/html/langs', function () {
-    const { prioritizeLocales } = getModule('lib/intl');
-    const { pseudo } = getModule('lib/pseudo');
+  modules.set('bindings\\html\\langs', function () {
+    const { prioritizeLocales } = getModule('lib\\intl');
+    const { pseudo } = getModule('lib\\pseudo');
 
     function getMeta(head) {
       let availableLangs = Object.create(null);
@@ -491,7 +491,7 @@
 
     return { getMeta, negotiateLanguages };
   });
-  modules.set('bindings/html/shims', function () {
+  modules.set('bindings\\html\\shims', function () {
     if (typeof NodeList === 'function' && !NodeList.prototype[Symbol.iterator]) {
       NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
     }
@@ -515,7 +515,7 @@
 
     return { documentReady, getDirection };
   });
-  modules.set('lib/pseudo', function () {
+  modules.set('lib\\pseudo', function () {
     function walkEntry(entry, fn) {
       if (typeof entry === 'string') {
         return fn(entry);
@@ -620,8 +620,8 @@
     });
     return { walkEntry, walkValue, pseudo };
   });
-  modules.set('lib/format/l20n/entries/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\l20n\\entries\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     const MAX_PLACEABLES = 100;
     return {
       parse: function (emit, string) {
@@ -1136,8 +1136,8 @@
       }
     };
   });
-  modules.set('lib/format/properties/parser', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\format\\properties\\parser', function () {
+    const { L10nError } = getModule('lib\\errors');
     var MAX_PLACEABLES = 100;
     return {
       patterns: null,
@@ -1364,7 +1364,7 @@
       }
     };
   });
-  modules.set('lib/plurals', function () {
+  modules.set('lib\\plurals', function () {
     const locales2rules = {
       'af': 3,
       'ak': 4,
@@ -1870,8 +1870,8 @@
 
     return { getPluralRule };
   });
-  modules.set('lib/resolver', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('lib\\resolver', function () {
+    const { L10nError } = getModule('lib\\errors');
     const KNOWN_MACROS = ['plural'];
     const MAX_PLACEABLE_LENGTH = 2500;
     const FSI = '⁨';
@@ -2030,10 +2030,10 @@
 
     return { format };
   });
-  modules.set('lib/context', function () {
-    const { L10nError } = getModule('lib/errors');
-    const { format } = getModule('lib/resolver');
-    const { getPluralRule } = getModule('lib/plurals');
+  modules.set('lib\\context', function () {
+    const { L10nError } = getModule('lib\\errors');
+    const { format } = getModule('lib\\resolver');
+    const { getPluralRule } = getModule('lib\\plurals');
 
     class Context {
       constructor(env) {
@@ -2191,12 +2191,12 @@
 
     return { Context };
   });
-  modules.set('lib/env', function () {
-    const { Context } = getModule('lib/context');
-    const PropertiesParser = getModule('lib/format/properties/parser');
-    const L20nParser = getModule('lib/format/l20n/entries/parser');
-    const { walkEntry, pseudo } = getModule('lib/pseudo');
-    const { emit, addEventListener, removeEventListener } = getModule('lib/events');
+  modules.set('lib\\env', function () {
+    const { Context } = getModule('lib\\context');
+    const PropertiesParser = getModule('lib\\format\\properties\\parser');
+    const L20nParser = getModule('lib\\format\\l20n\\entries\\parser');
+    const { walkEntry, pseudo } = getModule('lib\\pseudo');
+    const { emit, addEventListener, removeEventListener } = getModule('lib\\events');
     const parsers = {
       properties: PropertiesParser,
       l20n: L20nParser
@@ -2297,11 +2297,11 @@
 
     return { Env, amendError };
   });
-  modules.set('bindings/html/remote', function () {
-    const { Env } = getModule('lib/env');
-    const { pseudo } = getModule('lib/pseudo');
-    const { documentReady } = getModule('bindings/html/shims');
-    const { getMeta, negotiateLanguages } = getModule('bindings/html/langs');
+  modules.set('bindings\\html\\remote', function () {
+    const { Env } = getModule('lib\\env');
+    const { pseudo } = getModule('lib\\pseudo');
+    const { documentReady } = getModule('bindings\\html\\shims');
+    const { getMeta, negotiateLanguages } = getModule('bindings\\html\\langs');
 
     class Remote {
       constructor(fetch, broadcast, requestedLangs) {
@@ -2365,7 +2365,7 @@
 
     return { Remote, getAdditionalLanguages };
   });
-  modules.set('lib/events', function () {
+  modules.set('lib\\events', function () {
     function emit(listeners, ...args) {
       const type = args.shift();
 
@@ -2399,8 +2399,8 @@
 
     return { emit, addEventListener, removeEventListener };
   });
-  modules.set('runtime/web/bridge', function () {
-    const { emit, addEventListener } = getModule('lib/events');
+  modules.set('runtime\\web\\bridge', function () {
+    const { emit, addEventListener } = getModule('lib\\events');
 
     class Client {
       constructor(remote) {
@@ -2423,7 +2423,7 @@
 
     return { Client, broadcast };
   });
-  modules.set('lib/errors', function () {
+  modules.set('lib\\errors', function () {
     function L10nError(message, id, lang) {
       this.name = 'L10nError';
       this.message = message;
@@ -2435,8 +2435,8 @@
     L10nError.prototype.constructor = L10nError;
     return { L10nError };
   });
-  modules.set('runtime/web/io', function () {
-    const { L10nError } = getModule('lib/errors');
+  modules.set('runtime\\web\\io', function () {
+    const { L10nError } = getModule('lib\\errors');
 
     function load(type, url) {
       return new Promise(function (resolve, reject) {
@@ -2500,11 +2500,11 @@
 
     return { fetch };
   });
-  modules.set('runtime/web/index', function () {
-    const { fetch } = getModule('runtime/web/io');
-    const { Client, broadcast } = getModule('runtime/web/bridge');
-    const { Remote } = getModule('bindings/html/remote');
-    const { View } = getModule('bindings/html/view');
+  modules.set('runtime\\web\\index', function () {
+    const { fetch } = getModule('runtime\\web\\io');
+    const { Client, broadcast } = getModule('runtime\\web\\bridge');
+    const { Remote } = getModule('bindings\\html\\remote');
+    const { View } = getModule('bindings\\html\\view');
 
     const remote = new Remote(fetch, broadcast, navigator.languages);
     window.addEventListener('languagechange', remote);
@@ -2512,5 +2512,5 @@
 
     document.l10n = new View(new Client(remote), document);
   });
-  getModule('runtime/web/index');
+  getModule('runtime\\web\\index');
 })(this);
