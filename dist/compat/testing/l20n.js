@@ -41,9 +41,23 @@
         if (!reOverlay.test(value)) {
           element.textContent = value;
         } else {
-          var tmpl = element.ownerDocument.createElement('template');
-          tmpl.innerHTML = value;
-          overlay(element, tmpl.content);
+          var tmpl = element.ownerDocument.createElement('template'),
+              fragment = null;
+
+          if (tmpl instanceof HTMLUnknownElement) {
+            fragment = document.createDocumentFragment();
+            var tmp = document.createElement('div');
+            tmp.innerHTML = value.replace(/[\u2068\u2069]/g, '');
+
+            while (tmp.childNodes.length > 0) {
+              fragment.appendChild(tmp.childNodes[0]);
+            }
+          } else {
+            tmpl.innerHTML = value;
+            fragment = tmpl.content;
+          }
+
+          overlay(element, fragment);
         }
       }
 

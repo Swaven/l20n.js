@@ -25,5 +25,7 @@
   "quotmark": "single",
   "maxcomplexity": 20,
   "maxerr": 50,
-  "maxlen": 80
+  "maxlen": 80,
+
+  "predef": ["HTMLUnknownElement"]
 }

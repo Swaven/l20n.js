@@ -36,10 +36,27 @@ export function overlayElement(element, translation) {
     } else {
       // start with an inert template element and move its children into
       // `element` but such that `element`'s own children are not replaced
-      const tmpl = element.ownerDocument.createElement('template');
-      tmpl.innerHTML = value;
+      var tmpl = element.ownerDocument.createElement('template'),
+          fragment = null;
+
+      // IE/Edge has no template: create DocumentFragment manually
+      if (tmpl instanceof HTMLUnknownElement) {
+        fragment = document.createDocumentFragment();
+        // Cannot set content directly, use nodes taken from temp container
+        var tmp = document.createElement('div');
+        // strange chars added for reasons, remove them
+        tmp.innerHTML = value.replace(/[\u2068\u2069]/g, '');
+        while (tmp.childNodes.length > 0) {
+          fragment.appendChild(tmp.childNodes[0]);
+        }
+      }
+      else {
+        tmpl.innerHTML = value;
+        fragment = tmpl.content;
+      }
+
       // overlay the node with the DocumentFragment
-      overlay(element, tmpl.content);
+      overlay(element, fragment);
     }
   }
 
@@ -192,4 +209,3 @@ function camelCaseToDashed(string) {
     })
     .replace(/^-/, '');
 }
-
