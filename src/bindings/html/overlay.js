@@ -28,7 +28,8 @@ const allowed = {
 };
 
 export function overlayElement(element, translation) {
-  const value = translation.value;
+  const value = translation.value != null ?
+    translation.value.replace(/[\u2068\u2069]/g, '') : translation.value;
 
   if (typeof value === 'string') {
     if (!reOverlay.test(value)) {
@@ -45,7 +46,7 @@ export function overlayElement(element, translation) {
         // Cannot set content directly, use nodes taken from temp container
         var tmp = document.createElement('div');
         // strange chars added for reasons, remove them
-        tmp.innerHTML = value.replace(/[\u2068\u2069]/g, '');
+        tmp.innerHTML = value;
         while (tmp.childNodes.length > 0) {
           fragment.appendChild(tmp.childNodes[0]);
         }

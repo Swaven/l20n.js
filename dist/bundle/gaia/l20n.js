@@ -33,7 +33,7 @@
     };
 
     function overlayElement(element, translation) {
-      const value = translation.value;
+      const value = translation.value != null ? translation.value.replace(/[\u2068\u2069]/g, '') : translation.value;
 
       if (typeof value === 'string') {
         if (!reOverlay.test(value)) {
@@ -45,7 +45,7 @@
           if (tmpl instanceof HTMLUnknownElement) {
             fragment = document.createDocumentFragment();
             var tmp = document.createElement('div');
-            tmp.innerHTML = value.replace(/[\u2068\u2069]/g, '');
+            tmp.innerHTML = value;
 
             while (tmp.childNodes.length > 0) {
               fragment.appendChild(tmp.childNodes[0]);
